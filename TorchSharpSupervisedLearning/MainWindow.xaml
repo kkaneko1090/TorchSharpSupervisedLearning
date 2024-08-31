@@ -1,0 +1,19 @@
+﻿<Window x:Class="TorchSharpSupervisedLearning.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TorchSharpSupervisedLearning"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="309"
+        Background="Gray">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <InkCanvas x:Name="cnvDrawingArea" Width="256" Height="256" Margin="15"/>
+            <TextBlock x:Name="txtPredicted" Text="null" Height="32" Width="250" Foreground="Yellow" TextAlignment="Center" FontSize="18" FontStyle="Normal"/>
+            <Button x:Name="btnReset" Content="Reset" Height="32" Width="150" Margin="5" Click="btnReset_Click"/>
+            <Button x:Name="btnPredict" Content="Predict" Height="32" Width="150" Margin="5" Click="btnPredict_Click"/>
+            <Button x:Name="btnTrain" Content="Train" Height="32" Width="150" Margin="5" Click="btnTrain_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
