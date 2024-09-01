@@ -9,7 +9,9 @@
         Background="Gray">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <InkCanvas x:Name="cnvDrawingArea" Width="256" Height="256" Margin="15"/>
+            <Canvas Background="Transparent" Margin="10" Width="257" Height="257">
+                <InkCanvas x:Name="cnvDrawingArea" Width="256" Height="256" Margin="0" Background="White"/>
+            </Canvas>
             <TextBlock x:Name="txtPredicted" Text="null" Height="32" Width="250" Foreground="Yellow" TextAlignment="Center" FontSize="18" FontStyle="Normal"/>
             <Button x:Name="btnReset" Content="Reset" Height="32" Width="150" Margin="5" Click="btnReset_Click"/>
             <Button x:Name="btnPredict" Content="Predict" Height="32" Width="150" Margin="5" Click="btnPredict_Click"/>

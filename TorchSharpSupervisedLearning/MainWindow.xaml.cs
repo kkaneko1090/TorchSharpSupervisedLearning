@@ -45,8 +45,7 @@ namespace TorchSharpSupervisedLearning
         /// <summary>
         /// 画像のサイズ
         /// </summary>
-        int[] _imageSize = [72, 72];
-
+        int[] _imageSize = [128, 128];
 
         /// <summary>
         /// Canvasのリセットボタン
@@ -67,7 +66,6 @@ namespace TorchSharpSupervisedLearning
         {
             //CanvasをBitmapに変換
             Bitmap bitmap = Utility.InkCanvasToBitmap(cnvDrawingArea, _imageSize);
-            bitmap.Save("bmp.png");
             //Tensorに変換して推論
             (int labelIndex, float probability) = _model.Predict(Utility.BitmapToTensor(bitmap));
             //フォームに推論結果と確立を表示
@@ -95,7 +93,7 @@ namespace TorchSharpSupervisedLearning
                 //モデルの初期化
                 _model = new MLModel(inputSize: _imageSize, outputSize: _labels.Length);//ラベル数から出力次元を決定
                 //バッチ学習
-                _model.TrainOnBatch(dataset: dataset, epochCount: 30, batchSize: 10);
+                _model.TrainOnBatch(dataset: dataset, epochCount: 50, batchSize: 128);
                 //推論ボタンを有効にする
                 btnPredict.IsEnabled = true; 
             }
