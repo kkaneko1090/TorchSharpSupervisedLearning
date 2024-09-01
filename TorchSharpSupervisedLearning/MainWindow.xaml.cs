@@ -45,8 +45,7 @@ namespace TorchSharpSupervisedLearning
         /// <summary>
         /// 画像のサイズ
         /// </summary>
-        int[] _imageSize = [72, 72];
-
+        int[] _imageSize = [128, 128];
 
         /// <summary>
         /// Canvasのリセットボタン
@@ -67,7 +66,6 @@ namespace TorchSharpSupervisedLearning
         {
             //CanvasをBitmapに変換
             Bitmap bitmap = Utility.InkCanvasToBitmap(cnvDrawingArea, _imageSize);
-            bitmap.Save("bmp.png");
             //Tensorに変換して推論
             (int labelIndex, float probability) = _model.Predict(Utility.BitmapToTensor(bitmap));
             //フォームに推論結果と確立を表示

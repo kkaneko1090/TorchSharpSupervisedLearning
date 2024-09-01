@@ -67,13 +67,15 @@ namespace TorchSharpSupervisedLearning
             // Graphicsオブジェクトを使ってリサイズ
             using (Graphics graphics = Graphics.FromImage(resizedBitmap))
             {
-                //補間モード
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                //背景の初期化
+                graphics.Clear(System.Drawing.Color.White);
+                //補間モードを指定
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
                 //新しいサイズで描画
                 graphics.DrawImage(originalBitmap, 0, 0, width, height);
+                return resizedBitmap;
             }
 
-            return resizedBitmap;
         }
 
         /// <summary>
@@ -161,6 +163,7 @@ namespace TorchSharpSupervisedLearning
             // RenderTargetBitmapに変換
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
             renderBitmap.Render(canvas);
+
             //Bitmapに変換
             using (var stream = new MemoryStream())
             {
@@ -168,7 +171,6 @@ namespace TorchSharpSupervisedLearning
                 encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
                 encoder.Save(stream);
                 Bitmap bmp = new Bitmap(stream);
-
                 //リサイズして返す
                 return ResizeBitmap(bmp, bitmapSize[0], bitmapSize[1]);
             }
